@@ -1,0 +1,29 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: conference-service
+  datasource:
+    name: conference-db
+    url: jdbc:h2:file:C:\Users\NFeshchenko_upc\IdeaProjects\hometask\conference-service;MV_STORE=false;AUTO_SERVER=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database: h2
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+#    properties:
+#      hibernate:
+#        default_schema: conf
+  flyway:
+    enabled: true
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    locations: classpath:db/migration
+#    default-schema: conf
+#    schemas: conf

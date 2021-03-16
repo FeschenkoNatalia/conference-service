@@ -1,0 +1,31 @@
+server:
+  port: 8084
+
+spring:
+  profiles:
+    active: test
+  application:
+    name: conference-service
+  datasource:
+    name: test-db
+    url: jdbc:h2:mem:test-db
+    driver-class-name: org.h2.Driver
+    username:
+    password:
+  jpa:
+    database: h2
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+#    properties:
+#      hibernate:
+#        default_schema: conf
+  flyway:
+    enabled: true
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    locations: classpath:db/migration
+#    default-schema: conf
+#    schemas: conf
